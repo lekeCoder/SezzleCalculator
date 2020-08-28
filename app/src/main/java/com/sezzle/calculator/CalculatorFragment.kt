@@ -1,15 +1,17 @@
 package com.sezzle.calculator
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import android.widget.TextView
+import com.sezzle.calculator.calc.CalcCompute
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
 /**
  * A simple [Fragment] subclass.
@@ -17,16 +19,12 @@ private const val ARG_PARAM2 = "param2"
  * create an instance of this fragment.
  */
 class CalculatorFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+    private lateinit var calcCompute: CalcCompute
+    private lateinit var calcTv: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
+
     }
 
     override fun onCreateView(
@@ -34,26 +32,42 @@ class CalculatorFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_calculator, container, false)
+        val v = inflater.inflate(R.layout.fragment_calculator, container, false)
+        calcCompute = CalcCompute()
+        calcTv = v.findViewById(R.id.calcTv)
+        v.findViewById<Button>(R.id.button0).setOnClickListener { butClicked("0") }
+        v.findViewById<Button>(R.id.button1).setOnClickListener { butClicked("1") }
+        v.findViewById<Button>(R.id.button2).setOnClickListener { butClicked("2") }
+        v.findViewById<Button>(R.id.button3).setOnClickListener { butClicked("3") }
+        v.findViewById<Button>(R.id.button4).setOnClickListener { butClicked("4") }
+        v.findViewById<Button>(R.id.button5).setOnClickListener { butClicked("5") }
+        v.findViewById<Button>(R.id.button6).setOnClickListener { butClicked("6") }
+        v.findViewById<Button>(R.id.button7).setOnClickListener { butClicked("7") }
+        v.findViewById<Button>(R.id.button8).setOnClickListener { butClicked("8") }
+        v.findViewById<Button>(R.id.button9).setOnClickListener { butClicked("9") }
+        v.findViewById<Button>(R.id.buttonAdd).setOnClickListener { butClicked("+") }
+        v.findViewById<Button>(R.id.buttonMin).setOnClickListener { butClicked("-") }
+        v.findViewById<Button>(R.id.buttonMul).setOnClickListener { butClicked("*") }
+        v.findViewById<Button>(R.id.buttonDiv).setOnClickListener { butClicked("/") }
+        v.findViewById<Button>(R.id.buttoneq).setOnClickListener { butClicked("=") }
+        v.findViewById<Button>(R.id.buttonc).setOnClickListener { butClicked("c") }
+
+
+        return v
+    }
+
+    @SuppressLint("SetTextI18n")
+    private fun butClicked(buttonItem: String) {
+        if(buttonItem == "c") {
+            calcTv.text = ""
+            calcCompute.clear()
+            return
+        }
+        calcTv.text =  calcCompute.insertEntry(buttonItem)
     }
 
     companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment CalculatorFragment.
-         */
-        // TODO: Rename and change types and number of parameters
         @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            CalculatorFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
+        fun newInstance() = CalculatorFragment()
     }
 }

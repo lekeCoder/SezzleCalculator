@@ -16,11 +16,11 @@
             android:id="@+id/calcTv"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center_vertical|end"
+            android:gravity="center"
             android:minHeight="60dp"
             android:text="@string/zero"
             android:textColor="@android:color/darker_gray"
-            android:textSize="36sp"
+            android:textSize="56sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -210,10 +210,19 @@
                 android:layout_marginRight="9dp"
                 android:text="0"
                 android:textSize="30sp" />
+            <Button
+                android:id="@+id/buttonc"
+                android:layout_width="@dimen/butsize"
+                android:layout_height="@dimen/butsize"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="9dp"
+                android:layout_marginRight="9dp"
+                android:text="C"
+                android:textSize="30sp" />
 
             <Button
                 android:id="@+id/buttoneq"
-                android:layout_width="@dimen/buteqsize"
+                android:layout_width="@dimen/butsize"
                 android:layout_height="@dimen/butsize"
                 android:layout_marginTop="5dp"
                 android:layout_marginEnd="9dp"
