@@ -5,6 +5,7 @@ import java.util.*
 
 class CalcCompute {
         companion object {
+                private var accurateCalc : String = ""
                 private val linkedList = LinkedList<CalcEntry>()
                 private val operators: List<String> = Arrays.asList("+", "-", "/", "*", "=")
                 var isOperatorFound = false;
@@ -19,7 +20,12 @@ class CalcCompute {
                                 val print = print()
                                 clear()
                                 linkedList.add(CalcEntry(ButtonType.NUMBER, result))
-                                return "$print = $result"
+                                accurateCalc = "$print = $result"
+                                return accurateCalc
+                        }
+                        if(!isOperatorFound && key == "="){
+                                accurateCalc = ""
+                                return print()
                         }
                         if(isOperatorFound){
                                 val result = compute()
@@ -76,6 +82,10 @@ class CalcCompute {
                        result.append(calcEntry.key)
                 }
                 return result.toString()
+        }
+
+        fun getAccurateEntry(): String {
+                return accurateCalc
         }
 
 }

@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "216020647808",
+    "firebase_url": "https://sezzle-63b7b.firebaseio.com",
+    "project_id": "sezzle-63b7b",
+    "storage_bucket": "sezzle-63b7b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:216020647808:android:f4ccced0c903b75dd44b65",
+        "android_client_info": {
+          "package_name": "com.sezzle.calculator"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "216020647808-nq95os7n6jlrcl4vhk5jd0kldrj6c4hm.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.sezzle.calculator",
+            "certificate_hash": "6aac1cc37ab9d94665e4704ef061ab8949f751ca"
+          }
+        },
+        {
+          "client_id": "216020647808-l3mk5q89nj38htrus48l9ro93mr0m4mk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDyXYKOrM2twMCOx_oLWKlNvXdiDIQgwRI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "216020647808-l3mk5q89nj38htrus48l9ro93mr0m4mk.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

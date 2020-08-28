@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
 import com.sezzle.calculator.calc.CalcCompute
+import com.sezzle.calculator.service.FirebaseService
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -21,6 +22,7 @@ import com.sezzle.calculator.calc.CalcCompute
 class CalculatorFragment : Fragment() {
     private lateinit var calcCompute: CalcCompute
     private lateinit var calcTv: TextView
+    private lateinit var firebaseService : FirebaseService
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,6 +35,7 @@ class CalculatorFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         val v = inflater.inflate(R.layout.fragment_calculator, container, false)
+        firebaseService = FirebaseService.getInstance(activity)!!
         calcCompute = CalcCompute()
         calcTv = v.findViewById(R.id.calcTv)
         v.findViewById<Button>(R.id.button0).setOnClickListener { butClicked("0") }
@@ -64,6 +67,12 @@ class CalculatorFragment : Fragment() {
             return
         }
         calcTv.text =  calcCompute.insertEntry(buttonItem)
+        if(buttonItem == "="){
+            val properCalcResult = calcCompute.getAccurateEntry()
+            if(properCalcResult.isNotEmpty()){
+                firebaseService.pushData(properCalcResult)
+            }
+        }
     }
 
     companion object {
