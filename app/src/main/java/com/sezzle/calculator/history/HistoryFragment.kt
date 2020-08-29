@@ -42,6 +42,11 @@ class HistoryFragment : Fragment(), HistoryInterface {
         historyPresenter = HistoryPresenter.getInstance(this)!!
     }
 
+    override fun onResume() {
+        super.onResume()
+        historyPresenter = HistoryPresenter.getInstance(this)!!
+    }
+
     override fun add(userCalc: UserCalc) {
         recyclerAdapter.insert(userCalc)
     }
@@ -52,6 +57,11 @@ class HistoryFragment : Fragment(), HistoryInterface {
 
     override fun update(userCalc: UserCalc) {
 
+    }
+
+    override fun onDetach() {
+        historyPresenter.clearHistoryOnClose()
+        super.onDetach()
     }
 
 }

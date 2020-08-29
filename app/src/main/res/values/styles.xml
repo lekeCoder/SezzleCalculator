@@ -7,4 +7,18 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="numButStyle" parent="TextAppearance.AppCompat.Widget.Button">
+        <item name="android:layout_width">60dp</item>
+        <item name="android:layout_height">60dp</item>
+        <item name="android:layout_margin">2dp</item>
+        <item name="android:textSize">25sp</item>
+    </style>
+    <style name="opeButStyle" parent="TextAppearance.AppCompat.Widget.Button">
+        <item name="android:layout_width">60dp</item>
+        <item name="android:layout_height">60dp</item>
+        <item name="android:layout_margin">2dp</item>
+        <item name="android:textSize">25sp</item>
+        <item name="android:background">@color/colorAccent</item>
+    </style>
+
 </resources>

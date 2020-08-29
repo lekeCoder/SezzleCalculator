@@ -12,7 +12,8 @@
         android:gravity="center"
         android:text="history"
         android:textSize="25sp"
-        android:textColor="@color/colorAccent"
+        android:fontFamily="sans-serif-smallcaps"
+        android:textColor="@color/colorPrimary"
         />
 
     <androidx.recyclerview.widget.RecyclerView

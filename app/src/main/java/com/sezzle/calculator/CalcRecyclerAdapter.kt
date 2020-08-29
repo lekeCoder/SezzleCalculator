@@ -33,9 +33,10 @@ class CalcRecyclerAdapter(private val context: Context): Adapter<CalcViewHolder>
     }
 
     fun delete(userCalc: UserCalc) {
-        val index = list.indexOf(userCalc)
+        //val index = list.indexOf(userCalc)
         list.remove(userCalc)
-        notifyItemRemoved(index)
+        //notifyItemRemoved(index)
+        notifyDataSetChanged()
     }
 }
 
@@ -52,7 +53,7 @@ class CalcViewHolder(itemView: View): ViewHolder(itemView) {
 
     private fun getDateTime(s: Long): String? {
         try {
-            val sdf = SimpleDateFormat("dd MMM, yyyy hh:mm:ssA", Locale.US)
+            val sdf = SimpleDateFormat("EE MMM dd, yyyy hh:mm:ss a", Locale.US)
             val netDate = Date(s)
             return sdf.format(netDate)
         } catch (e: Exception) {

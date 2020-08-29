@@ -4,13 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="9dp"
+    android:padding="8dp"
     tools:context=".CalculatorFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp">
+        android:layout_marginTop="2dp">
 
         <TextView
             android:id="@+id/calcTv"
@@ -20,68 +20,41 @@
             android:minHeight="60dp"
             android:text="@string/zero"
             android:textColor="@android:color/darker_gray"
-            android:textSize="56sp"
+            android:textSize="46sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/guideline"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            app:layout_constraintGuide_begin="75dp" />
 
         <LinearLayout
             android:id="@+id/first_row"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/guideline"
+            app:layout_constraintTop_toBottomOf="@id/calcTv"
             app:layout_constraintEnd_toEndOf="parent"
             android:gravity="center_horizontal"
             android:orientation="horizontal">
 
             <Button
                 android:id="@+id/button1"
-                android:layout_width="@dimen/butsize"
-                android:layout_height="@dimen/butsize"
-                android:layout_marginTop="5dp"
-                android:layout_marginEnd="9dp"
-                android:layout_marginRight="9dp"
-                android:text="1"
-                android:textSize="30sp" />
+                style="@style/numButStyle"
+                android:text="1" />
 
             <Button
                 android:id="@+id/button2"
-                android:layout_width="@dimen/butsize"
-                android:layout_height="@dimen/butsize"
-                android:layout_marginTop="5dp"
-                android:layout_marginEnd="9dp"
-                android:layout_marginRight="9dp"
-                android:text="2"
-                android:textSize="30sp" />
+                style="@style/numButStyle"
+                android:text="2" />
 
             <Button
                 android:id="@+id/button3"
-                android:layout_width="@dimen/butsize"
-                android:layout_height="@dimen/butsize"
-                android:layout_marginTop="5dp"
-                android:layout_marginEnd="9dp"
-                android:layout_marginRight="9dp"
-                android:text="3"
-                android:textSize="30sp" />
+                style="@style/numButStyle"
+                android:text="3" />
             <Button
                 android:id="@+id/buttonMul"
-                android:layout_width="@dimen/butsize"
-                android:layout_height="@dimen/butsize"
-                android:layout_marginTop="5dp"
-                android:layout_marginEnd="9dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginRight="9dp"
+                style="@style/opeButStyle"
                 android:text="*"
-                android:textSize="30sp"
-                android:layout_marginLeft="16dp" />
+                 />
 
 
         </LinearLayout>
@@ -98,44 +71,26 @@
 
             <Button
                 android:id="@+id/button4"
-                android:layout_width="@dimen/butsize"
-                android:layout_height="@dimen/butsize"
-                android:layout_marginTop="5dp"
-                android:layout_marginEnd="9dp"
-                android:layout_marginRight="9dp"
+                style="@style/numButStyle"
                 android:text="4"
-                android:textSize="30sp" />
+                />
 
             <Button
                 android:id="@+id/button5"
-                android:layout_width="@dimen/butsize"
-                android:layout_height="@dimen/butsize"
-                android:layout_marginTop="5dp"
-                android:layout_marginEnd="9dp"
-                android:layout_marginRight="9dp"
+                style="@style/numButStyle"
                 android:text="5"
-                android:textSize="30sp" />
+               />
 
             <Button
                 android:id="@+id/button6"
-                android:layout_width="@dimen/butsize"
-                android:layout_height="@dimen/butsize"
-                android:layout_marginTop="5dp"
-                android:layout_marginEnd="9dp"
-                android:layout_marginRight="9dp"
+                style="@style/numButStyle"
                 android:text="6"
-                android:textSize="30sp" />
+                />
             <Button
                 android:id="@+id/buttonDiv"
-                android:layout_width="@dimen/butsize"
-                android:layout_height="@dimen/butsize"
-                android:layout_marginTop="5dp"
-                android:layout_marginEnd="9dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginRight="9dp"
+                style="@style/opeButStyle"
                 android:text="/"
-                android:textSize="30sp"
-                android:layout_marginLeft="16dp" />
+                 />
 
 
         </LinearLayout>
@@ -151,44 +106,26 @@
 
             <Button
                 android:id="@+id/button7"
-                android:layout_width="@dimen/butsize"
-                android:layout_height="@dimen/butsize"
-                android:layout_marginTop="5dp"
-                android:layout_marginEnd="9dp"
-                android:layout_marginRight="9dp"
+                style="@style/numButStyle"
                 android:text="7"
-                android:textSize="30sp" />
+                 />
 
             <Button
                 android:id="@+id/button8"
-                android:layout_width="@dimen/butsize"
-                android:layout_height="@dimen/butsize"
-                android:layout_marginTop="5dp"
-                android:layout_marginEnd="9dp"
-                android:layout_marginRight="9dp"
+                style="@style/numButStyle"
                 android:text="8"
-                android:textSize="30sp" />
+                 />
 
             <Button
                 android:id="@+id/button9"
-                android:layout_width="@dimen/butsize"
-                android:layout_height="@dimen/butsize"
-                android:layout_marginTop="5dp"
-                android:layout_marginEnd="9dp"
-                android:layout_marginRight="9dp"
+                style="@style/numButStyle"
                 android:text="9"
-                android:textSize="30sp" />
+                 />
             <Button
                 android:id="@+id/buttonAdd"
-                android:layout_width="@dimen/butsize"
-                android:layout_height="@dimen/butsize"
-                android:layout_marginTop="5dp"
-                android:layout_marginEnd="9dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginRight="9dp"
+                style="@style/opeButStyle"
                 android:text="+"
-                android:textSize="30sp"
-                android:layout_marginLeft="16dp" />
+                 />
         </LinearLayout>
 
         <LinearLayout
@@ -203,45 +140,25 @@
 
             <Button
                 android:id="@+id/button0"
-                android:layout_width="@dimen/butsize"
-                android:layout_height="@dimen/butsize"
-                android:layout_marginTop="5dp"
-                android:layout_marginEnd="9dp"
-                android:layout_marginRight="9dp"
+                style="@style/numButStyle"
                 android:text="0"
-                android:textSize="30sp" />
+                />
             <Button
                 android:id="@+id/buttonc"
-                android:layout_width="@dimen/butsize"
-                android:layout_height="@dimen/butsize"
-                android:layout_marginTop="5dp"
-                android:layout_marginEnd="9dp"
-                android:layout_marginRight="9dp"
-                android:text="C"
-                android:textSize="30sp" />
+                style="@style/opeButStyle"
+                android:text="C" />
 
             <Button
                 android:id="@+id/buttoneq"
-                android:layout_width="@dimen/butsize"
-                android:layout_height="@dimen/butsize"
-                android:layout_marginTop="5dp"
-                android:layout_marginEnd="9dp"
-                android:layout_marginRight="9dp"
+                style="@style/opeButStyle"
                 android:text="="
-                android:textSize="30sp" />
+                />
 
 
             <Button
                 android:id="@+id/buttonMin"
-                android:layout_width="@dimen/butsize"
-                android:layout_height="@dimen/butsize"
-                android:layout_marginTop="5dp"
-                android:layout_marginEnd="9dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginRight="9dp"
-                android:text="-"
-                android:textSize="30sp"
-                android:layout_marginLeft="16dp" />
+                style="@style/opeButStyle"
+                android:text="-" />
 
 
         </LinearLayout>

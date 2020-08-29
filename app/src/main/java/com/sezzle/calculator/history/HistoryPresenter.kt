@@ -1,24 +1,25 @@
 package com.sezzle.calculator.history
 
 import android.app.Activity
+import android.content.Context
 import android.util.Log
+import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.database.ChildEventListener
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
-import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.*
 import com.sezzle.calculator.calc.UserCalc
 import com.sezzle.calculator.service.FirebaseService
+import timber.log.Timber
 
 internal class HistoryPresenter private constructor() {
 
     companion object {
         private var ourInstance: HistoryPresenter? = null
         private lateinit var historyInterface: HistoryInterface
-      //  private var mContext: Activity? = null
+       // private var mContext: Context? = null
+        private val userKeys = mutableListOf<String>()
         fun getInstance(historyInterface: HistoryInterface): HistoryPresenter? {
             if (ourInstance == null) {
-               // mContext = context
+                //mContext = context
                 this.historyInterface = historyInterface
                 ourInstance = HistoryPresenter()
             }
@@ -31,7 +32,8 @@ internal class HistoryPresenter private constructor() {
     }
 
     private fun fetchHistory() {
-        val mRef = FirebaseDatabase.getInstance().getReference("user-calc").orderByChild("tt").limitToFirst(10)
+        //FirebaseDatabase.getInstance().setPersistenceEnabled(false)
+        val mRef = FirebaseDatabase.getInstance().getReference("user-calc").orderByChild("tt").limitToFirst(10).ref
         mRef.addChildEventListener(object: ChildEventListener{
             override fun onCancelled(error: DatabaseError) {
                 //TODO("Not yet implemented")
@@ -64,12 +66,16 @@ internal class HistoryPresenter private constructor() {
     }
 
     private fun procCalc(snapshot: DataSnapshot): UserCalc?{
+        Timber.tag("procCalc").e(snapshot.toString())
         try {
             val time: Long = snapshot.child("tt").value as Long
             val calc : String = snapshot.child("cc").value as String
             var uid : String = snapshot.child("usr").value as String
             val cUid = FirebaseAuth.getInstance().currentUser?.uid
-            if(cUid == uid) uid = "Me"
+            if(cUid == uid) {
+                snapshot.key?.let { userKeys.add(it) }
+                uid = "Me"
+            }
             else uid = uid.substring(0,10)+"..."
             val userCalc = UserCalc(calc,uid,time)
             snapshot.key?.let{
@@ -77,8 +83,14 @@ internal class HistoryPresenter private constructor() {
             }
            return userCalc
         } catch (e: Exception) {
-            Log.e("onChildAdded",e.localizedMessage )
+            Timber.tag("onChildAdded").e(e.localizedMessage )
         }
         return null
+    }
+
+    fun clearHistoryOnClose(){
+        for (key in userKeys) {
+            FirebaseDatabase.getInstance().getReference("user-calc").child(key).removeValue()
+        }
     }
 }
