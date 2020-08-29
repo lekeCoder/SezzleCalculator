@@ -10,7 +10,7 @@ import java.util.*
 
 internal class FirebaseService private constructor() {
     private var user: FirebaseUser? = null
-    private val mAuth: FirebaseAuth
+    private val mAuth: FirebaseAuth = FirebaseAuth.getInstance()
     private fun getUser() {
         user = mAuth.currentUser
         if (user == null) {
@@ -59,7 +59,6 @@ internal class FirebaseService private constructor() {
     }
 
     init {
-        mAuth = FirebaseAuth.getInstance()
         getUser()
     }
 }
